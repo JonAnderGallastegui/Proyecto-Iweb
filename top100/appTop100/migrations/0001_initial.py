@@ -34,8 +34,8 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(max_length=40)),
                 ('fecha_nacimiento', models.DateField()),
                 ('antiguedad', models.IntegerField(default=0)),
-                ('departamento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='appEmpresaDjango.departamento')),
-                ('habilidades', models.ManyToManyField(to='appEmpresaDjango.habilidad')),
+                ('departamento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='appTop100.departamento')),
+                ('habilidades', models.ManyToManyField(to='appTop100.habilidad')),
             ],
         ),
     ]

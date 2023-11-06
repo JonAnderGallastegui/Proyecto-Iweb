@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 INSTALLED_APPS = [
-    'appEmpresaDjango',
+    'appTop100',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'empresaDjango.urls'
+ROOT_URLCONF = 'top100.urls'
 
 TEMPLATES = [
     {
@@ -67,10 +67,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        
     },
 ]
 
-WSGI_APPLICATION = 'empresaDjango.wsgi.application'
+WSGI_APPLICATION = 'top100.wsgi.application'
 
 
 # Database
