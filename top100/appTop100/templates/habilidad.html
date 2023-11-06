@@ -12,7 +12,7 @@
 	{% if empleados %}
 		<ol>
 		{% for e in empleados %}
-			<li><a href="{% url 'empleado' e.id %}">{{ e.nombre}}</a></li>
+                   <li><a href="{% url 'empleado' e.id %}">{{ e.nombre}}</a></li>
 		{% endfor %}
 		</ol>
 	{% else %}
