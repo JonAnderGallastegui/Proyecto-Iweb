@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de estilos{% endblock %}
+
+{% block contenido %}
+<h2>Listado de estilos</h2>
+{% if lista_estilos %}
+	<ul>
+	{% for e in lista_estilos %}
+		<li>
+                    <li><a href="{% url 'detail' e.id %}">{{ e.nombre}}</a></li>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay estilos creados.</p>
+{% endif %}
+{% endblock %}

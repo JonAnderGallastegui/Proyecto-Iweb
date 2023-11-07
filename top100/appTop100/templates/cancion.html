@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalles de la cancion {% endblock %}
+
+{% block contenido %}
+
+<h2>Datos del cancion</h2>
+
+{% if cancion %}
+    <ul>
+        <li>
+            {{ cancion.titulo}}
+        </li>
+        <li>
+            <a href="/appTop100/estilos/{{ cancion.estilo.id }}">{{ cancion.estilo}}</a>
+        </li>
+    </ul>
+	<h3>Lista de interpretes</h3>
+	{% if interpretes %}
+		<ol>
+		{% for i in interpretes %}
+                    <li><a href="{% url 'detail' i.id %}">{{ i.nombre}}</a></li>
+		{% endfor %}
+		</ol>
+	{% else %}
+		<p>No tiene interpretes asociados.</p>
+	{% endif %}
+{% else %}
+    <p>No existe esta cancion.</p>
+{% endif %}
+
+{% endblock %}

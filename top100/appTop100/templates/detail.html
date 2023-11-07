@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalle del estilo {% endblock %}
+
+{% block contenido %}
+<h2>Datos del estilo</h2>
+
+{% if estilo %}
+    <ul>
+        <li>
+            {{ estilo.nombre}}
+        </li>
+        <li>
+            <a href="{% url 'canciones' estilo.id %}">Ver canciones</a>
+        </li>
+    </ul>
+{% else %}
+    <p>No existe este estilo.</p>
+{% endif %}
+
+{% endblock %}

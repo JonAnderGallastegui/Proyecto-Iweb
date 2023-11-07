@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %} Canciones del estilo {% endblock %}
+
+{% block contenido %}
+<h2>Lista de canciones</h2>
+<h3>{{ estilo.nombre }}</h3>
+{% if canciones %}
+	<ul>
+	{% for c in canciones %}
+		<li>
+                    <a href="{% url 'cancion' c.id %}">{{ c.titulo}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay canciones creadas.</p>
+{% endif %}
+{% endblock %}
