@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<h2>Datos del cancion</h2>
+<h2>Datos de la cancion</h2>
 
 {% if cancion %}
     <ul>
@@ -17,11 +17,11 @@
     </ul>
 	<h3>Lista de interpretes</h3>
 	{% if interpretes %}
-		<ol>
+		<ul>
 		{% for i in interpretes %}
-                    <li><a href="{% url 'detail' i.id %}">{{ i.nombre}}</a></li>
+                    <li><a href="{% url 'interprete' i.id %}">{{ i.nombre}}</a></li>
 		{% endfor %}
-		</ol>
+		</ul>
 	{% else %}
 		<p>No tiene interpretes asociados.</p>
 	{% endif %}
