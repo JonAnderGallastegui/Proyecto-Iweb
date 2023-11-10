@@ -8,7 +8,7 @@
 	<ul>
 	{% for e in lista_estilos %}
 		<li>
-                    <li><a href="{% url 'detail' e.id %}">{{ e.nombre}}</a></li>
+        	<a href="{% url 'detail' e.id %}">{{ e.nombre}}</a>
 		</li>
 	{% endfor %}
 	</ul>
