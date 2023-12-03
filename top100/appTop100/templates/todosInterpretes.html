@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Intérpretes {% endblock %}
+
+{% block contenido %}
+
+<h2>Lista de Intérpretes</h2>
+
+{% if interpretes %}
+    <ul>
+        {% for i in interpretes %}
+            <li>
+                <a href="{% url 'interprete' i.id %}">{{ i.nombre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay intérpretes creados.</p>
+{% endif %}
+
+{% endblock %}
+

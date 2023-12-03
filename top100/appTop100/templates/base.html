@@ -6,9 +6,19 @@
         <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     </head>
     <body>
-        <div id="content">
-	     <h1>Gestor de Canciones</h1>
-            {% block contenido %}{% endblock %}
-        </div>
+        <header>
+            <h1>Gestor de Canciones</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'todas_canciones' %}">Ver todas las canciones</a></li>
+                    <li><a href="{% url 'todos_interpretes' %}">Ver todos los interpretes</a></li>
+                    <li><a href="{% url 'todos_estilos' %}">Ver todos los estilos</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% block contenido %}{% endblock %}
+        <footer>
+            <p>&copy; <em>2023 Gestor de canciones. Todos los derechos reservados.</em></p>
+        </footer>
     </body>
 </html>

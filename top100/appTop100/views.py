@@ -30,9 +30,26 @@ def index_canciones(request, estilo_id):
         context = {'estilo': estilo, 'canciones' : canciones }
         return render(request, 'canciones.html', context)
 
-#devuelve los detalles de una habilidad
+#devuelve los detalles de una cancion
 def show_cancion(request, cancion_id):
         cancion = get_object_or_404(Cancion, pk=cancion_id)
         interpretes = cancion.interpretes.all()
         context = { 'cancion': cancion, 'interpretes' : interpretes }
         return render(request, 'cancion.html', context)
+
+def index_todas_canciones(request):
+    canciones = get_list_or_404(Cancion.objects.order_by('titulo'))
+    context = {'canciones': canciones}
+    return render(request, 'todasCanciones.html', context)
+
+# En tu vista
+def index_todos_interpretes(request):
+    interpretes = get_list_or_404(Interprete.objects.order_by('nombre'))
+    context = {'interpretes': interpretes}
+    return render(request, 'todosInterpretes.html', context)
+
+#devuelve el listado de estilos
+def index_todos_estilos(request):
+        estilos  = get_list_or_404(Estilo.objects.order_by('nombre'))
+        context = {'lista_estilos': estilos }
+        return render(request, 'todosEstilos.html', context)

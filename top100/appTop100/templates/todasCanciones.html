@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block titulo %} Todas las Canciones {% endblock %}
+
+{% block contenido %}
+    <h2>Lista de todas las canciones</h2>
+    
+    {% if canciones %}
+        <ul>
+            {% for c in canciones %}
+                <li>
+                    <a href="{% url 'cancion' c.id %}">{{ c.titulo }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay canciones creadas.</p>
+    {% endif %}
+{% endblock %}
+

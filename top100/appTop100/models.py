@@ -17,5 +17,8 @@ class Cancion(models.Model):
     titulo = models.CharField(max_length=50)
     estilo = models.ForeignKey(Estilo, on_delete=models.CASCADE)  
     interpretes = models.ManyToManyField(Interprete)
+    fecha_lanzamiento = models.DateField(default=None, null=True) 
+    duracion = models.IntegerField(default=0)
+    posicion = models.IntegerField(default=0)
     def __str__(self):
         return self.titulo
