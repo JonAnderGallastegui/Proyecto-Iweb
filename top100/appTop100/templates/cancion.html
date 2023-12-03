@@ -12,7 +12,7 @@
             {{ cancion.titulo}}
         </li>
         <li>
-            <a href="/appTop100/estilos/{{ cancion.estilo.id }}">{{ cancion.estilo}}</a>
+	    <a href="{% url 'detail' cancion.detail.id %}">{{ cancion.detail}}</a>
         </li>
     </ul>
 	<h3>Lista de interpretes</h3>
