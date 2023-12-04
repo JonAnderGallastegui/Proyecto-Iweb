@@ -8,7 +8,7 @@
     <body>
         <header>
             <h1>Gestor de Canciones</h1>
-            <nav>
+            <nav class="nav-list">
                 <ul>
                     <li><a href="{% url 'todas_canciones' %}">Ver todas las canciones</a></li>
                     <li><a href="{% url 'todos_interpretes' %}">Ver todos los interpretes</a></li>
@@ -16,9 +16,15 @@
                 </ul>
             </nav>
         </header>
-        {% block contenido %}{% endblock %}
-        <footer>
-            <p>&copy; <em>2023 Gestor de canciones. Todos los derechos reservados.</em></p>
-        </footer>
+        <main>
+            {% block contenido %}{% endblock %}
+        </main>
     </body>
+    <footer>
+        <ul class="foot-list">
+            <li><a href="https://open.spotify.com/intl-es">Spotify</a></li>
+            <li><a href="https://music.apple.com/es/browse">Apple Music</a></li>
+        </ul>
+        <p>&copy; <em>2023 Gestor de canciones. Todos los derechos reservados.</em></p>
+    </footer>
 </html>
