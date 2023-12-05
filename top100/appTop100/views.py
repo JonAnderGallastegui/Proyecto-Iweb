@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Estilo, Interprete, Cancion
 
+from django.views.generic import ListView
+
 
 # Create your views here.
 from .models import Estilo, Interprete, Cancion
@@ -68,12 +70,19 @@ def index_todos_interpretes(request):
     return render(request, 'todosInterpretes.html', context)
 
 #devuelve el listado de estilos
-def index_todos_estilos(request):
+class index_todos_estilos(ListView):
+    model = Estilo
+    template_name = 'todosEstilos.html'
+    context_object_name = 'lista_estilos'
+    ordering = ['nombre']
+
+
+""" def index_todos_estilos(request):
         estilos  = get_list_or_404(Estilo.objects.order_by('nombre'))
         context = {'lista_estilos': estilos }
         return render(request, 'todosEstilos.html', context)
 
-
+ """
 def show_añadir_canciones(request):
     return render(request, 'añadir_canciones.html')
 from django.shortcuts import redirect

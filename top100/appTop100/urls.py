@@ -10,7 +10,7 @@ urlpatterns = [
     path('interpretes/<int:interprete_id>', views.show_interpretes, name='interprete'),
     path('canciones/', views.index_todas_canciones, name='todas_canciones'),
     path('interprete/', views.index_todos_interpretes, name='todos_interpretes'),
-    path('estilos/', views.index_todos_estilos, name='todos_estilos'),
+    path('estilos/', views.index_todos_estilos.as_view(), name='todos_estilos'),
     path('añadir_canciones/', views.show_añadir_canciones, name='añadir_canciones'),
     path('añadidos/', views.show_añadidos, name='añadidos'),
 ]
