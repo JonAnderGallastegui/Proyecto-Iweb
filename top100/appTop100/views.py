@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
 from .models import Estilo, Interprete, Cancion
@@ -53,3 +54,18 @@ def index_todos_estilos(request):
         estilos  = get_list_or_404(Estilo.objects.order_by('nombre'))
         context = {'lista_estilos': estilos }
         return render(request, 'todosEstilos.html', context)
+
+
+def show_form(request):
+    return render(request, 'registro.html')
+
+def post_form(request):
+    nombre_cancion = request.POST["nombre_cancion"]
+    fecha_lanzamiento = request.POST["fecha_lanzamiento"]
+    duracion = request.POST["duracion"]
+    posicion_ranking = request.POST["posicion_ranking"]
+    estilo = request.POST["estilo"]
+    interpretes = request.POST["interpretes"]
+
+    return HttpResponse(f"La cancion '{nombre_cancion}' ha sido añadida correctamente")
+
