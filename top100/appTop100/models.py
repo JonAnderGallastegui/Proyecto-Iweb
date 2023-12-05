@@ -9,7 +9,7 @@ class Estilo(models.Model):
  
 class Interprete(models.Model):
     nombre = models.CharField(max_length=50)
-    fecha_nacimiento = models.DateField()
+    fecha_nacimiento = models.DateField(blank=True, null=True)
     def __str__(self):
         return self.nombre
 
