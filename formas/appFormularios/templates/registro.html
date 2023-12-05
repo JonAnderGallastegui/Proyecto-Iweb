@@ -6,7 +6,7 @@
 </head>
 <body>
     <form action="{% url 'registrar' %}" method="post">
-        <!-- {% csrf_token %} -->
+        {% csrf_token %}
         <p>
             <label>Nombre de usuario </label>
             <input type="text" name="usuario">
