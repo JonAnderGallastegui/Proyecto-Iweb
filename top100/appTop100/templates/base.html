@@ -1,29 +1,5 @@
 {% load i18n %}
 <!DOCTYPE html>
-<<<<<<< Updated upstream
-<html lang="en">
-    <head>
-        <title>{% block titulo %}Gestor de Canciones{% endblock %}</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-    </head>
-    <body>
-        <header>
-            <h1>Gestor de Canciones</h1>
-            <nav class="nav-list">
-                <ul>
-                    <li><a href="{% url 'todas_canciones' %}">Ver todas las canciones</a></li>
-                    <li><a href="{% url 'todos_interpretes' %}">Ver todos los interpretes</a></li>
-                    <li><a href="{% url 'todos_estilos' %}">Ver todos los estilos</a></li>
-                    <li><a href="{% url 'añadir_canciones' %}">Añadir canciones</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            {% block contenido %}{% endblock %}
-        </main>
-    </body>
-=======
 <html lang="es">
 <head>
     <title>{% block titulo %}{% trans "Gestor de Canciones" %}{% endblock %}</title>
@@ -41,13 +17,13 @@
                 <li><a href="{% url 'todas_canciones' %}">{% trans "Ver todas las canciones" %}</a></li>
                 <li><a href="{% url 'todos_interpretes' %}">{% trans "Ver todos los interpretes" %}</a></li>
                 <li><a href="{% url 'todos_estilos' %}">{% trans "Ver todos los estilos" %}</a></li>
+                <li><a href="{% url 'añadir_canciones' %}">Añadir canciones</a></li>
             </ul>
         </nav>
     </header>
     <main>
         {% block contenido %}{% endblock %}
     </main>
->>>>>>> Stashed changes
     <footer>
         <ul class="foot-list">
             <li><a href="https://open.spotify.com/intl-es">Spotify</a></li>
