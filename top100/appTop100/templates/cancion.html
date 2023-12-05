@@ -7,16 +7,16 @@
 <h2>Datos de la cancion</h2>
 
 {% if cancion %}
-    <ul>
-        <li>
+    <ul vocab="https://schema.org/">
+        <li property="titulo">
             {{ cancion.titulo}}
 		</li>
-		<li>
+		<li property="fecha_lanzamiento">
 			Fecha de lanzamiento: {{ cancion.fecha_lanzamiento}}
 		</li>
-		<li>
+		<li property="duracion">
 			Duración: {{ cancion.duracion}} segundos
-		<li>
+		<li property="posicion">
 			Posición en el ranking: {{ cancion.posicion}}
         </li>
         <li>
