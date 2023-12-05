@@ -57,7 +57,7 @@ def index_todos_estilos(request):
 
 
 def show_form(request):
-    return render(request, 'registro.html')
+    return render(request, 'formulario.html')
 
 def post_form(request):
     nombre_cancion = request.POST["nombre_cancion"]
