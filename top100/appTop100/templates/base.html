@@ -1,4 +1,6 @@
+{% load i18n %}
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html lang="en">
     <head>
         <title>{% block titulo %}Gestor de Canciones{% endblock %}</title>
@@ -21,11 +23,37 @@
             {% block contenido %}{% endblock %}
         </main>
     </body>
+=======
+<html lang="es">
+<head>
+    <title>{% block titulo %}{% trans "Gestor de Canciones" %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header_title %}{% trans "Gestor de Canciones" %}{% endblock %}</h1>
+        <p><a href="{% url 'switch_language' 'en' %}">{% trans "English" %}</a></p>
+        <p><a href="{% url 'switch_language' 'es' %}">{% trans "Español" %}</a></p>
+      
+        <nav class="nav-list">
+            <ul>
+                <li><a href="{% url 'todas_canciones' %}">{% trans "Ver todas las canciones" %}</a></li>
+                <li><a href="{% url 'todos_interpretes' %}">{% trans "Ver todos los interpretes" %}</a></li>
+                <li><a href="{% url 'todos_estilos' %}">{% trans "Ver todos los estilos" %}</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+>>>>>>> Stashed changes
     <footer>
         <ul class="foot-list">
             <li><a href="https://open.spotify.com/intl-es">Spotify</a></li>
             <li><a href="https://music.apple.com/es/browse">Apple Music</a></li>
         </ul>
-        <p>&copy; <em>2023 Gestor de canciones. Todos los derechos reservados.</em></p>
+        <p>&copy; <em>{% block footer_text %} 2023 {% trans "Gestor de canciones. Todos los derechos reservados." %}{% endblock %}</em></p>
     </footer>
+</body>
 </html>

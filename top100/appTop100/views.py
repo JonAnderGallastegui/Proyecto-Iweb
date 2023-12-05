@@ -9,9 +9,25 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 #devuelve el listado de estilos
 def index_estilos(request):
-        estilos  = get_list_or_404(Estilo.objects.order_by('nombre'))
-        context = {'lista_estilos': estilos }
+        canciones = Cancion.objects.raw('SELECT * FROM (SELECT * FROM appTop100_Cancion ORDER BY posicion ASC) GROUP BY estilo_id')
+        context = {'lista_canciones': canciones }
         return render(request, 'index.html', context)
+
+from django.shortcuts import redirect
+from django.utils.translation import activate
+
+
+def switch_language(request, language_code):
+    # Activate the chosen language
+    activate(language_code)
+
+    print(f'Activated language: {language_code}')
+
+    # Redirect to the previous page or a default page
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+
 
 #devuelve los datos de un estilo
 def show_estilos(request, estilo_id):

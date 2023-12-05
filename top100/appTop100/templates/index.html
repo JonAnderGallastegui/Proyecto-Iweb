@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block titulo %}Listado de estilos{% endblock %}
+{% block titulo %}Listado de canciones top por estilo{% endblock %}
 
 {% block contenido %}
-<h2>Listado de estilos</h2>
-{% if lista_estilos %}
+<h2>Listado de canciones top por estilo</h2>
+{% if lista_canciones %}
 	<ul>
-	{% for e in lista_estilos %}
+	{% for c in lista_canciones %}
 		<li>
-        	<a href="{% url 'detail' e.id %}">{{ e.nombre}}</a>
+        	<a href="{% url 'cancion' c.id %}">{{ c.titulo}}</a>
 		</li>
 	{% endfor %}
 	</ul>
 {% else %}
-<p>No hay estilos creados.</p>
+<p>No hay canciones en el ranking.</p>
 {% endif %}
 {% endblock %}
