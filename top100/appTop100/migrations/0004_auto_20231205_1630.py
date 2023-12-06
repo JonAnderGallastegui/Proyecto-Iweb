@@ -25,3 +25,16 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(add_initial_data),
     ]
+
+
+
+
+
+
+
+
+
+
+
+
+
