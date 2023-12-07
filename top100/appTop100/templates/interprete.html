@@ -1,34 +1,38 @@
 {% extends "base.html" %}
 
-{% block titulo %} Detalles del intérprete {% endblock %}
+{% block titulo %} Detalles del interprete {% endblock %}
 
 {% block contenido %}
 
 
-
-<h2>Datos del intérprete</h2>
+<h2>Datos del interprete</h2>
 
 {% if interprete %}
-    <h3>{{ interprete.nombre}}</h3>
-    Fecha de nacimiento: {{ interprete.fecha_nacimiento }}
-    {% if interprete.foto %}
-        <img src="{{ interprete.foto.url }}" alt="{{ interprete.nombre }}">
-    {% else %}
-        <p>No hay foto disponible.</p>
-    {% endif %}
-
-    <h3>Lista de canciones</h3>
-    {% if canciones %}
+  <div class="interprete-details">
+    <div class="interprete-details-info">
+      <h3>{{ interprete.nombre}}</h3>
+      Fecha de nacimiento: {{ interprete.fecha_nacimiento }}
+      <h3>Lista de canciones</h3>
+      {% if canciones %}
         <ol>
-            {% for c in canciones %}
-                <li><a href="{% url 'cancion' c.id %}">{{ c.titulo}}</a></li>
-            {% endfor %}
+          {% for c in canciones %}
+            <li><a href="{% url 'cancion' c.id %}">{{ c.titulo}}</a></li>
+          {% endfor %}
         </ol>
-    {% else %}
+      {% else %}
         <p>No tiene canciones asociadas.</p>
-    {% endif %}
+      {% endif %}
+    </div>
+    <div class="interprete-details-img">
+      {% if interprete.foto %}
+        <img src="{{ interprete.foto.url }}" alt="{{ interprete.nombre }}">
+      {% else %}
+        <p>No hay foto disponible.</p>
+      {% endif %}
+    </div>
+  </div>
 {% else %}
-    <p>No existe este intérprete.</p>
+  <p>No existe este interprete.</p>
 {% endif %}
 
 {% endblock %}
