@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index_estilos, name='index'),
-    path('switch-language/<str:language_code>/', views.switch_language, name='switch_language'),
     path('estilos/<int:estilo_id>/', views.show_estilos, name='detail'),
     path('estilos/<int:estilo_id>/canciones', views.index_canciones, name='canciones'),
     path('canciones/<int:cancion_id>', views.show_cancion, name='cancion'),
