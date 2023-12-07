@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,10 +26,6 @@ SECRET_KEY = 'django-insecure-%97^fw27w2u-p^s=^xv-vqi7b4epjsn0*xoi1tw3xw^m8=p7i)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-LANGUAGES = [
-    ('en', _('English')),
-    ('es', _('Spanish')),
-]
 
 ALLOWED_HOSTS = []
 
@@ -80,9 +75,6 @@ TEMPLATES = [
     },
 ]
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale')
-]
 
 WSGI_APPLICATION = 'top100.wsgi.application'
 
@@ -120,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
