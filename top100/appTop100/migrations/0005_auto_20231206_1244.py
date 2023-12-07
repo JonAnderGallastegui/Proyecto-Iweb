@@ -1,4 +1,4 @@
-# 0005_add_initial_songs.py
+# 0005_auto_20231206_1244.py
 
 from django.db import migrations
 from datetime import datetime
@@ -40,11 +40,11 @@ def add_initial_songs(apps, schema_editor):
             'estilo': Estilo.objects.get(nombre='Country'),
             'interpretes': [interprete_johnny_cash],
         },
-        # Add more songs as needed
+   
     ]
 
     for cancion_data in canciones_data:
-        interpretes = cancion_data.pop('interpretes')  # Remove 'interpretes' from data
+        interpretes = cancion_data.pop('interpretes') 
         cancion = Cancion.objects.create(**cancion_data)
         cancion.interpretes.set(interpretes)
 
