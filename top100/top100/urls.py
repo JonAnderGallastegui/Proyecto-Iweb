@@ -17,9 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
  path('', include('appTop100.urls')),
  path('admin/', admin.site.urls),
  path(_('about/') + _(''), include('appTop100.urls')),
 ]
+
+
+
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
