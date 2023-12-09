@@ -4,7 +4,6 @@ from .models import Estilo, Interprete, Cancion
 from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404, get_list_or_404
 
-#devuelve el listado de estilos
 
 class index_estilos(ListView):
     model = Cancion
@@ -24,7 +23,6 @@ class show_estilos(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # You can add additional context data here if needed
         return context
 
 """ #devuelve los datos de un estilo
@@ -123,7 +121,6 @@ def index_todos_interpretes(request):
     context = {'interpretes': interpretes}
     return render(request, 'todosInterpretes.html', context) """
 
-#devuelve el listado de estilos
 class index_todos_estilos(ListView):
     model = Estilo
     template_name = 'todosEstilos.html'
@@ -141,14 +138,24 @@ def show_añadir_canciones(request):
     return render(request, 'añadir_canciones.html')
 from django.shortcuts import redirect
 
+
 def show_añadidos(request):
     if request.method == 'POST':
-        nombre_cancion = request.POST["nombre_cancion"]
-        fecha_lanzamiento = request.POST["fecha_lanzamiento"]
-        duracion = request.POST["duracion"]
-        posicion_ranking = request.POST["posicion_ranking"]
-        estilo_nombre = request.POST["estilo"]
-        interpretes_nombres = request.POST["interpretes"]
+        nombre_cancion = request.POST.get("nombre_cancion")
+        fecha_lanzamiento = request.POST.get("fecha_lanzamiento")
+        duracion = request.POST.get("duracion")
+        posicion_ranking = request.POST.get("posicion_ranking")
+        estilo_nombre = request.POST.get("estilo")
+        interpretes_nombres = request.POST.get("interpretes")
+
+        if not nombre_cancion or not fecha_lanzamiento or not duracion or not posicion_ranking or not estilo_nombre or not interpretes_nombres:
+            return HttpResponse("Error: Todos los campos son obligatorios")
+
+        try:
+            duracion = int(duracion)
+            posicion_ranking = int(posicion_ranking)
+        except ValueError:
+            return HttpResponse("Error: La duración y la posición en el ranking deben ser números enteros")
 
         estilo, creado = Estilo.objects.get_or_create(nombre=estilo_nombre)
 
@@ -166,6 +173,6 @@ def show_añadidos(request):
 
         nueva_cancion.interpretes.set(interpretes)
 
-        return redirect('todas_canciones')  
+        return redirect('todas_canciones')
 
     return HttpResponse("Error: Método no permitido")

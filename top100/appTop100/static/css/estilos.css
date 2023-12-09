@@ -1,4 +1,4 @@
-/* Estilos generales para el body y el footer */
+
 body {
   background-image: url('../img/fondo2.webp');
   background-repeat: no-repeat;
@@ -13,7 +13,6 @@ body {
 
   
 
-
 body, footer {
   font-family: 'Arial', sans-serif;
   max-width: 800px;
@@ -22,17 +21,16 @@ body, footer {
   background-color: rgba(0, 0, 0, 0.786);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-  position: relative; /* Añadido para establecer el contexto de apilamiento */
+  position: relative; 
 }
 
 
-/* Estilos específicos para el contenido del medio */
 main {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border: 1px solid #ccc; /* Agrega un borde al contenido principal */
+  border: 1px solid #ccc; 
 }
 
 header {
@@ -73,7 +71,7 @@ header h1 {
 }
 
 .nav-list ul li:hover {
-  transform: scale(1.1); /* Agranda el elemento al pasar el ratón */
+  transform: scale(1.1); 
 }
 
 
@@ -81,20 +79,16 @@ header h1 {
   text-decoration: underline;
 }
 
-/* Estilos para la lista */
 .foot-list {
   list-style: none;
   padding: 0;
 }
 
-/* Estilos para los elementos de la lista */
 .foot-list li {
   margin-bottom: 10px;
 }
 
 
-
-/* Estilos para los enlaces */
 .foot-list li a {
   text-decoration: none;
   color: #ffffff;
@@ -103,10 +97,10 @@ header h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.1); /* Agrega un fondo al pasar el ratón sobre los enlaces */
+  background-color: rgba(255, 255, 255, 0.1); 
 }
 
-/* Estilos al pasar el ratón por encima de los enlaces */
+
 .foot-list li a:hover {
   background-color: #f0f0f0;
 }
@@ -126,30 +120,27 @@ footer {
 
 
 .interprete-details-info ol {
-  list-style: none; /* Elimina los puntos de la lista */
-  padding: 0; /* Elimina el relleno predeterminado */
+  list-style: none; 
+  padding: 0; 
 }
 
 .interprete-details-info ol li {
-  margin-bottom: 10px; /* Espacio entre cada elemento de la lista */
+  margin-bottom: 10px; 
 }
 
 .interprete-details-info ol li a {
-  text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
-  color: #333; /* Cambia el color del texto */
-  transition: color 0.3s ease; /* Agrega transición al color del texto */
+  text-decoration: none; 
+  color: #333; 
+  transition: color 0.3s ease; 
 }
 
 
 .interprete-details-info ol li a:hover {
-  color: #666; /* Cambia el color del texto al pasar el ratón */
+  color: #666; 
 }
 
 
 
-
-
-/* Estilos para la sección de detalles del intérprete */
 .interprete-details {
   display: flex;
   justify-content: space-between;
@@ -167,21 +158,21 @@ footer {
 
 .interprete-details-img img {
   width: 100%;
-  border-radius: 8px; /* Añade bordes redondeados a la imagen del intérprete */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Añade una sombra suave a la imagen */
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
 
 .foot-list li a {
-  transition: background-color 0.3s ease, color 0.3s ease; /* Agrega transiciones de color */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .foot-list li a:hover {
   background-color: #f0f0f0;
-  color: #333; /* Cambia el color del texto al pasar el ratón */
+  color: #333;
 }
 
 header:hover {
-  background-color: #555; /* Cambia el color de fondo al pasar el ratón sobre el encabezado */
+  background-color: #555; 
 }
 
