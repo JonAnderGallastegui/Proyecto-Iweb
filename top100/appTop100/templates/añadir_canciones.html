@@ -4,36 +4,96 @@
 
 {% block contenido %}
 
-<form action="{% url 'añadidos' %}" method="post">
+<form action="{% url 'añadidos' %}" method="post" id="formulario">
     {% csrf_token %}
     <h2>Datos de la canción</h2>
     <p>
         <label>Nombre de la canción:</label>
-        <input type="text" name="nombre_cancion">
+        <input type="text" name="nombre_cancion" class="campo-texto">
     </p>
     <p>     
         <label>Fecha de lanzamiento:</label>
-        <input type="date" name="fecha_lanzamiento">
+        <input type="date" name="fecha_lanzamiento" class="campo-texto">
     </p>
     <p>
         <label>Duración (segundos):</label>
-        <input type="number" name="duracion" min="1">
+        <input type="number" name="duracion" min="1" class="campo-texto">
     </p>
     <p>
         <label>Posición en el ranking:</label>
-        <input type="number" name="posicion_ranking" min="1">
+        <input type="number" name="posicion_ranking" min="1" class="campo-texto">
     </p>
     <p>
         <label>Estilo:</label>
-        <input type="text" name="estilo">
+        <input type="text" name="estilo" class="campo-texto">
     </p>
     <p>
         <label>Lista de intérpretes:</label>
-        <input type="text" name="interpretes">
+        <input type="text" name="interpretes" class="campo-texto">
     </p>
     <p>
         <input type="submit" value="Añadir canción">
     </p>
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var camposTexto = document.querySelectorAll('.campo-texto');
+        var formulario = document.getElementById('formulario');
+
+        camposTexto.forEach(function (campo) {
+            campo.addEventListener('blur', function () {
+                if (campo.value.trim() === '') {
+                    mostrarError('Error: Este campo es obligatorio', campo);
+                }
+            });
+        });
+
+        formulario.addEventListener('submit', function (event) {
+            var error = false;
+            camposTexto.forEach(function (campo) {
+                if (campo.value.trim() === '') {
+                    mostrarError('Error: Todos los campos son obligatorios', campo);
+                    error = true;
+                }
+            });
+
+            if (error) {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('click', function (event) {
+            var mensajeError = document.querySelector('.mensaje-error');
+            if (mensajeError && !event.target.classList.contains('campo-texto')) {
+                mensajeError.remove();
+            }
+        });
+
+        function mostrarError(mensaje, campo) {
+            var mensajesAnteriores = document.querySelectorAll('.mensaje-error');
+            mensajesAnteriores.forEach(function (elemento) {
+                elemento.remove();
+            });
+
+            var divError = document.createElement('div');
+            divError.className = 'mensaje-error';
+            divError.textContent = mensaje;
+
+            divError.style.position = 'fixed';
+            divError.style.top = '10px';
+            divError.style.left = '50%';
+            divError.style.transform = 'translateX(-50%)';
+            divError.style.backgroundColor = '#ffcccc'; 
+            divError.style.border = '1px solid #ff0000'; 
+            divError.style.padding = '10px'; 
+
+            document.body.appendChild(divError);
+
+            campo.focus();
+        }
+    });
+</script>
+
 
 {% endblock %}
