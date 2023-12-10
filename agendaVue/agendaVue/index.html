@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Configuración y Enlaces Externos -->
     <meta charset="utf-8">
@@ -63,10 +64,10 @@
                         <a href="#about">Acerca de...</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="https://twitter.com/TU_CUENTA_DE_TWITTER" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="https://facebook.com/TU_CUENTA_DE_FACEBOOK" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
                     </li>
                 </ul>
             </div>
@@ -92,55 +93,62 @@
     <!-- División de la Aplicación Vue -->
     <div id="app">
         <!-- Sección de Contactos -->
-        <section id="contactos">
+        <section id="contactos" itemscope itemtype="http://schema.org/ItemList">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2>Contactos</h2>
-                        <hr class="star-primary">
+                <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org/",
+                        "@type": "ItemList",
+                        "itemListElement": [
+                            <!-- Use JSON-LD for the "Teléfono" field -->
+                            {
+                                "@type": "Person",
+                                "name": "John Doe",
+                                "email": "john.doe@example.com",
+                                "telephone": "555555555"
+                            },
+                            <!-- Repeat the structure for other contacts -->
+                        ]
+                    }
+                </script>
+                <div class="row" itemprop="itemListElement" v-for="(contacto, index) in contactos" :key="index">
+                    <div class="col-xs-4" itemscope itemtype="http://schema.org/Person" itemprop="item">
+                        <!-- Use Microdata for the "Nombre" field -->
+                        <p itemprop="name">{{ contacto.nombre }}</p>
+                    </div>
+                    <div class="col-xs-4" vocab="http://schema.org/" typeof="Person" itemprop="item">
+                        <!-- Use RDFa for the "Email" field -->
+                        <p property="email">{{ contacto.email }}</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <!-- Use JSON-LD for the "Teléfono" field -->
+                        <script type="application/ld+json">
+                            {
+                                "@context": "http://schema.org/",
+                                "@type": "Person",
+                                "name": "{{ contacto.nombre }}",
+                                "email": "{{ contacto.email }}",
+                                "telephone": "{{ contacto.telefono }}"
+                            }
+                        </script>
+                        <p>{{ contacto.telefono }}</p>
+                    </div>
+                    <div class="col-xs-1" itemprop="itemListElement" typeof="ListItem" itemprop="item">
+                        <button class="btn btn-danger btn-sm" @click="borrarContacto(index)"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
-                <!-- Lista de Contactos -->
-                <div>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <h4>Nombre</h4>
-                        </div>
-                        <div class="col-xs-4">
-                            <h4>Email</h4>
-                        </div>
-                        <div class="col-xs-3">
-                            <h4>Teléfono</h4>
-                        </div>
-                        <div class="col-xs-1">
-                            <h4>Acciones</h4>
-                        </div>
-                    </div>
-                    <!-- Mostrar los contactos usando Vue -->
-                    <div class="row" v-for="(contacto, index) in contactos" :key="index">
-                        <div class="col-xs-4">
-                            <p>{{ contacto.nombre }}</p>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>{{ contacto.email }}</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <p>{{ contacto.telefono }}</p>
-                        </div>
-                        <div class="col-xs-1">
-                            <button class="btn btn-danger btn-sm" @click="borrarContacto(index)"><span class="glyphicon glyphicon-remove"></span></button>
-                        </div>
-                    </div>
-                    <!-- Mensaje si no hay contactos -->
-                    <div v-if="contactos.length === 0" class="row">
-                        <div class="col-xs-12">
-                            <p>No se ha encontrado ningún contacto.</p>
-                        </div>
+                <!-- Mueve la condición fuera del bucle -->
+                <div v-if="contactos.length === 0" class="row">
+                    <div class="col-xs-12">
+                        <p>No se ha encontrado ningún contacto.</p>
                     </div>
                 </div>
-
             </div>
         </section>
+        <!-- Resto del código... -->
+    
+
+
 
         <!-- Sección de Añadir Nuevo Contacto -->
         <section id="nuevo">
@@ -204,6 +212,32 @@
         </section>
     </div>
 
+    <!-- Sección de Tweets Incrustados -->
+    <section id="tweets">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Tweet</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <!-- Tweet Incrustado 1 -->
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">💡 Vue Tip: Use a Head Manager <br><br>🧵 👇🏻 <a href="https://twitter.com/vuejs?ref_src=twsrc%5Etfw">@vuejs</a> <a href="https://t.co/LbniFMxCaB">pic.twitter.com/LbniFMxCaB</a></p>&mdash; Michael Hoffmann (@Mokkapps) <a href="https://twitter.com/Mokkapps/status/1732445495111426202?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">If you&#39;ve ever wished you could ask a book questions, this is for you. <br><br>This AI tool is like ChatGPT for books. <br><br>Just upload any PDF book and ask a question. You&#39;ll get an answer with page citations in seconds. <br><br>The best part? It&#39;s free.</p>&mdash; Coral AI (@coralai_) <a href="https://twitter.com/coralai_/status/1732498040844661030?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Pie de Página y Botón de Desplazamiento -->
     <footer class="text-center">
         <div class="footer-above">
@@ -230,7 +264,7 @@
     <script src="js/classie.js"></script>
     <script src="js/cbpAnimatedHeader.js"></script>
     <script src="js/freelancer.js"></script>
-    <script src="js/vue.js"></script>  
+    <script src="js/vue.js"></script>
     <script>
         // Lógica de Vue para la Agenda de Contactos
         new Vue({
@@ -243,7 +277,7 @@
                 nuevoContacto: { nombre: '', email: '', telefono: '' }
             },
             methods: {
-                agregarContacto: function() {
+                agregarContacto: function () {
                     // Verificar que los campos no estén en blanco antes de agregar el contacto
                     if (this.nuevoContacto.nombre.trim() === '' ||
                         this.nuevoContacto.email.trim() === '' ||
@@ -252,24 +286,24 @@
                         alert('Por favor, completa todos los campos antes de añadir un nuevo contacto.');
                         return;
                     }
-    
+
                     // Lógica para agregar un nuevo contacto al array 'contactos'
                     this.contactos.push({
                         nombre: this.nuevoContacto.nombre,
                         email: this.nuevoContacto.email,
                         telefono: this.nuevoContacto.telefono
                     });
-    
+
                     this.nuevoContacto = { nombre: '', email: '', telefono: '' }; // Reiniciar el formulario
                 },
-                borrarContacto: function(index) {
+                borrarContacto: function (index) {
                     // Lógica para eliminar un contacto del array 'contactos' usando su índice
                     this.contactos.splice(index, 1);
                 }
             }
         });
     </script>
-    
-</body>
-</html>
 
+</body>
+
+</html>
