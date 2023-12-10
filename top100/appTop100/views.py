@@ -136,8 +136,6 @@ class index_todos_estilos(ListView):
  """
 def show_añadir_canciones(request):
     return render(request, 'añadir_canciones.html')
-from django.shortcuts import redirect
-
 
 def show_añadidos(request):
     if request.method == 'POST':

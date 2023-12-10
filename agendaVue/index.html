@@ -94,40 +94,38 @@
     <div id="app">
         <!-- Sección de Contactos -->
         <section id="contactos" itemscope itemtype="http://schema.org/ItemList">
+            <h2>Contactos</h2><br><br>
             <div class="container">
                 <script type="application/ld+json">
                     {
                         "@context": "http://schema.org/",
                         "@type": "ItemList",
-                        "itemListElement": [
-                            <!-- Use JSON-LD for the "Teléfono" field -->
+                        "itemListElement": [                            
                             {
                                 "@type": "Person",
                                 "name": "John Doe",
                                 "email": "john.doe@example.com",
                                 "telephone": "555555555"
                             },
-                            <!-- Repeat the structure for other contacts -->
+                            
                         ]
                     }
                 </script>
                 <div class="row" itemprop="itemListElement" v-for="(contacto, index) in contactos" :key="index">
                     <div class="col-xs-4" itemscope itemtype="http://schema.org/Person" itemprop="item">
-                        <!-- Use Microdata for the "Nombre" field -->
+                        <!-- Microdata -->
                         <p itemprop="name">{{ contacto.nombre }}</p>
                     </div>
                     <div class="col-xs-4" vocab="http://schema.org/" typeof="Person" itemprop="item">
-                        <!-- Use RDFa for the "Email" field -->
+                        <!-- RDFa -->
                         <p property="email">{{ contacto.email }}</p>
                     </div>
                     <div class="col-xs-3">
-                        <!-- Use JSON-LD for the "Teléfono" field -->
+                        <!-- JSON-LD -->
                         <script type="application/ld+json">
                             {
                                 "@context": "http://schema.org/",
-                                "@type": "Person",
-                                "name": "{{ contacto.nombre }}",
-                                "email": "{{ contacto.email }}",
+                                "@type": "Person",                              
                                 "telephone": "{{ contacto.telefono }}"
                             }
                         </script>
@@ -137,7 +135,7 @@
                         <button class="btn btn-danger btn-sm" @click="borrarContacto(index)"><span class="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
-                <!-- Mueve la condición fuera del bucle -->
+                
                 <div v-if="contactos.length === 0" class="row">
                     <div class="col-xs-12">
                         <p>No se ha encontrado ningún contacto.</p>
@@ -145,9 +143,6 @@
                 </div>
             </div>
         </section>
-        <!-- Resto del código... -->
-    
-
 
 
         <!-- Sección de Añadir Nuevo Contacto -->
@@ -212,7 +207,7 @@
         </section>
     </div>
 
-    <!-- Sección de Tweets Incrustados -->
+    <!-- Tweets -->
     <section id="tweets">
         <div class="container">
             <div class="row">
@@ -221,17 +216,18 @@
                     <hr class="star-primary">
                 </div>
             </div>
-            <!-- Tweet Incrustado 1 -->
+            <!-- Tweet 1 -->
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">💡 Vue Tip: Use a Head Manager <br><br>🧵 👇🏻 <a href="https://twitter.com/vuejs?ref_src=twsrc%5Etfw">@vuejs</a> <a href="https://t.co/LbniFMxCaB">pic.twitter.com/LbniFMxCaB</a></p>&mdash; Michael Hoffmann (@Mokkapps) <a href="https://twitter.com/Mokkapps/status/1732445495111426202?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script async src="https://platform.twitter.com/widgets.js"></script>
                 </div>
             </div>
+            <!-- Tweet 2 -->
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">If you&#39;ve ever wished you could ask a book questions, this is for you. <br><br>This AI tool is like ChatGPT for books. <br><br>Just upload any PDF book and ask a question. You&#39;ll get an answer with page citations in seconds. <br><br>The best part? It&#39;s free.</p>&mdash; Coral AI (@coralai_) <a href="https://twitter.com/coralai_/status/1732498040844661030?ref_src=twsrc%5Etfw">December 6, 2023</a></blockquote> 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script async src="https://platform.twitter.com/widgets.js"></script>
                 </div>
             </div>
         </div>

@@ -26,7 +26,9 @@ a.active {
 }
 
 h1,
-h2,
+h2 {
+    text-align: center;
+}
 h3,
 h4,
 h5,
